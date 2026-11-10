@@ -1,0 +1,26 @@
+{
+  "name": "semester-project-2026",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@eslint/css": "^2.0.1",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "globals": "^17.14.0",
+    "jiti": "^2.7.0",
+    "prettier": "3.9.10",
+    "typescript": "~5.9",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.6"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}
