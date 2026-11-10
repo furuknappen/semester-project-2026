@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../src/style.css" />
+</head>
+
+<body>
+  <main id="register-main"
+    class="mx-auto my-30 p-4 flex flex-col max-w-120 lg:max-w-200 lg:w-160 lg:p-16 lg:rounded-xl lg:shadow-card ">
+
+    <!-- Main login is accessible -->
+    <h1 class="text-4xl">Register</h1>
+    <p id="form-error" class="text-secondary-text block py-4" role="status" aria-live="polite"></p>
+
+    <form id="registration-form" novalidate>
+      <div class="flex flex-col gap-2">
+        <label class="ml-2 pt-8 font-semibold" for="username">
+          Username
+        </label>
+        <input class="input-field" type="text" id="username" name="username" required autocomplete="username"
+          aria-required="true" aria-describedby="username-error" />
+
+        <p id="username-error" class="text-secondary-text block text-sm ml-2" hidden>
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="ml-2 pt-8 font-semibold" for="registration-image"> Profile Picture <span
+            class="font-normal">(Optional)</span>
+        </label>
+
+        <p id="registration-image-hint" class="ml-2 text-sm text-secondary-text"> Enter full web address, starting with
+          http://</p>
+        <input class="input-field" type="url" id="registration-image" name="imageUrl"
+          placeholder="https://www.example.com/image.jpg"
+          aria-describedby="registration-image-error registration-image-hint" />
+        <p id="registration-image-error" class="ml-2 text-sm" hidden></p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="ml-2 pt-8 font-semibold" for="registration-image-alt">Describe the picture</label>
+        <p id="registration-image-alt-hint" class="ml-2 text-sm text-secondary-text"> Helps others who use screen
+          readers understand the picture</p>
+        <input class="input-field" type="text" id="registration-image-alt" name="imageAlt"
+          aria-describedby="registration-image-alt-hint" />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="ml-2 pt-8 font-semibold" for="registration-email">
+          Email Address</label>
+        <p id="registration-email-hint" class="ml-2 text-sm text-secondary-text"> Use your Noroff student email, for
+          example name@stud.noroff.no</p>
+        <input class="input-field" type="email" id="registration-email" name="email" autocomplete="email"
+          aria-required="true" aria-describedby="registration-email-hint registration-email-error" required />
+        <p id="registration-email-error" class=" block ml-4" hidden>
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="ml-2 pt-8 font-semibold" for="password1">
+          Password</label>
+        <p id="password-hint" class="ml-2 text-sm text-secondary-text">At least 8 characters</p>
+        <input class="input-field" type="password" id="password1" name="password1" required autocomplete="new-password"
+          aria-required="true" aria-describedby="password-hint password-error" />
+        <p id="password-error" class="text-sm ml-2" hidden>
+
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="ml-2 pt-8 font-semibold" for="password2">
+          Repeat Password</label>
+        <input class="input-field " type="password" id="password2" name="password2" required autocomplete="new-password"
+          aria-required="true" aria-describedby="password-confirm-error" />
+        <p id="password-confirm-error" class="ml-2 text-sm" hidden>
+        </p>
+      </div>
+
+      <div class="my-8 flex flex-col items-center gap-6">
+
+        <button type="submit" class="bg-primary text-light-text rounded-xl px-4 py-2 md:px-8 md:text-xl shadow-card" id="loginBtn">
+          Create account
+        </button>
+
+        <div>
+          <p class="text-lg">Already have an account?</p>
+          <div class="mt-4">
+
+
+            <a class="underline underline-offset-4" href="./login.html">
+              <span> Sign in here </span>
+            </a>
+            <span class="mx-4">OR</span>
+            <a href="../index.html">Continue as guest <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+
+
+
+  <script type="module" src="../src/forms/register-form.ts"></script>
+</body>
+
+</html>

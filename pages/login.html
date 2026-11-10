@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../src/style.css" />
+
+  <title>Document</title>
+</head>
+
+<body>
+  <main id="login-main"
+    class="mx-auto mt-30 p-4 flex flex-col max-w-120  lg:w-120 lg:p-16 lg:rounded-xl lg:shadow-card ">
+    <!-- Main login is accessible -->
+    <h1 class="text-4xl">Sign in</h1>
+    <p id="form-error" class=" block" role="status" aria-live="polite"></p>
+
+    <form id="sign-in-form" novalidate>
+      <div class="flex flex-col gap-2">
+        <label for="login-email" class="ml-2 pt-4 font-semibold">
+          Email Address</label>
+        <p id="login-email-hint" class="ml-2 text-sm text-secondary-text"> Use your Noroff student email, for example
+          name@stud.noroff.no </p>
+        <input class="input-field" type="email" id="login-email" name="email" autocomplete="email" required
+          aria-describedby="login-email-hint login-email-error" aria-required="true" />
+        <p id="login-email-error" class="ml-2 text-sm" hidden></p>
+      </div>
+<!-- TODO: øyet er litt på feil sted, men kan ikke gjlre noe med det fordi jeg har Bitwarden. help -->
+      <div class="flex flex-col gap-2">
+        <label for="login-password" class="ml-2 pt-8 font-semibold">
+          Password</label>
+          <div class="relative">
+        <input class="input-field w-full" type="password" id="login-password" name="password" autocomplete="current-password"
+          required aria-describedby="login-password-error" />
+         <button type="button" id="toggle-password" class="absolute right-6 top-1/2 -translate-y-1/2 px-2 py-1 text-sm underline">   
+          
+        <img id="eye-icon" src="../src/assets/eye.svg" class="hidden">
+        <img id="eye-closed-icon" src="../src/assets/eye-closed.svg" />
+         </button>
+
+
+        </div>
+        <p id="login-password-error" class="ml-2 text-sm" hidden></p>
+      </div>
+
+      <div class="my-8 flex flex-col items-center gap-6">
+
+        <button type="submit" class="bg-primary text-light-text rounded-xl px-4 py-2 md:px-8 md:text-xl" id="loginBtn">
+          Sign in
+        </button>
+
+        <div>
+          <p class="text-lg">Don't have an account yet?</p>
+          <div>
+
+
+            <a class="underline underline-offset-4" href="./register.html">
+              <span> Sign up here </span>
+            </a>
+            <span class="mx-4">OR</span>
+            <a href="../index.html">Continue as guest <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+  <script type="module" src="../src/forms/login-form.ts"></script>
+</body>
+
+</html>
