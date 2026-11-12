@@ -2,9 +2,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+[hidden] { 
+  display: none !important; 
+}
+
 @layer components {
   .input-field {
     @apply border-line-light flex h-10 rounded-2xl border bg-gray-100 pl-4 text-gray-900 ;
+  }
+  .content-container{
+    @apply  rounded-xl shadow-card bg-white p-4
+  }
+  .sub-heading{
+    @apply font-semibold text-lg mb-2
   }
   body {
     @apply text-dark-text dark:text-light-text bg-background-light dark:bg-background-dark;
@@ -26,7 +36,7 @@
   --color-light-text: oklch(93.685% 0.003 264.782);
   --color-dark-text: oklch(16.714% 0.06173 310.497);
 
-  --color-line-light: oklch(87.2% 0.01 258.338);
+  --color-line-light: oklch(80.74% 0.00611 264.634);
   --color-line-dark: #5b5b5b;
 
   --font-arial: Arial, Helvetica, sans-serif;

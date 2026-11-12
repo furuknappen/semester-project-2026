@@ -9,3 +9,4 @@ export default defineConfig([
   tseslint.configs.recommended,
   { files: ["**/*.css"], plugins: { css }, language: "css/css", extends: ["css/recommended"] },
 ]);
+
