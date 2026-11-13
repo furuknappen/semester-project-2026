@@ -10,7 +10,10 @@
 
 <body>
   <header>
-
+    <button id="theme-btn" class="items-center mr-4 absolute right-2 lg:right-8">
+      <img id="sun-icon" src="../src/assets/sun.svg" />
+      <img id="moon-icon" src="../src/assets/moon.svg" class="hidden" />
+    </button>
     <button id="sidebar-toggle" type="button" class=" lg:hidden" aria-label="sidebar with account details"
       aria-controls="sidebar-root" aria-expanded="false" hidden>
       <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -39,7 +42,7 @@
 
 
   </main>
-
+  <script type="module" src="/src/components/header.ts"></script>
   <script type="module" src="/src/components/sidebar.ts"></script>
   <script type="module" src="/src/main.ts"></script>
 </body>
