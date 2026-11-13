@@ -27,24 +27,56 @@
       </svg>
     </button>
   </header>
-  <main class="grid grid-cols-1 lg:grid-cols-[200px_1fr_200px] items-start my-4 mx-4 gap-4">
-    <div class="bg-green-300 hidden lg:block">space</div>
-    <section class="bg-red-300">
-      cards Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi tenetur ex eos afutem veritarrtis nisi enim
-      corrupti impedit aut vero dolore dignissimos recusandae dolores id, nobis nam aliquid eum aperiam.
+  <main
+    class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] lg:justify-between xl:grid-cols-[250px_auto_300px] items-start my-4 mx-4 gap-4">
+    <div class="hidden md:block"></div>
+    <section class="">
+      <ul id="cards-parent">
+
+      </ul>
+   <div class="my-12 flex justify-center gap-4 md:gap-20 md:text-xl">
+      <button id="prev-btn"
+        class="bg-primary text-light-text hover:bg-primary-hover mx-8 my-4 rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">
+        Previous Page
+      </button>
+      <button id="next-btn"
+        class="bg-primary text-light-text hover:bg-primary-hover mx-8 my-4 rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">
+        Next Page
+      </button>
+    </div>
     </section>
 
 
-    <aside data-open="false" aria-label="Account summary and active listings" id="sidebar-root"
-      class="max-lg:fixed max-lg:transition-[translate,visibility] max-lg:duration-300 max-lg:ease-out max-lg:motion-reduce:transition-none max-lg:data-[open=false]:translate-x-[110%] max-lg:data-[open=false]:invisible right-4 gap-8 grid grid-rows-[100px_400px] h-full lg:sticky lg:top-4">
+    <aside data-open="false" aria-label="Account summary and active listings" id="sidebar-root" class="
+      max-lg:gap-4
+      lg:w-70
+      max-xl:w-80
+      max-lg:fixed 
+      max-lg:transition-[translate,visibility] 
+      max-lg:duration-300 
+      max-lg:ease-out 
+      max-lg:motion-reduce:transition-none 
+      max-lg:data-[open=false]:translate-x-[110%] 
+      max-lg:data-[open=false]:invisible
+      right-2
+      lg:ml-2
+      lg:sticky 
+      lg:top-4
+      lg:right-8 
+      lg:gap-8 
+      grid 
+      grid-rows-[125px_400px] 
+    ">
       <!-- Sidebar renders here  -->
     </aside>
 
 
   </main>
-  <script type="module" src="/src/components/header.ts"></script>
-  <script type="module" src="/src/components/sidebar.ts"></script>
-  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="./src/components/pagination.ts"></script>
+  <script type="module" src="./src/pages/homepage.ts"></script>
+  <script type="module" src="./src/components/header.ts"></script>
+  <script type="module" src="./src/components/sidebar.ts"></script>
+  <script type="module" src="./src/main.ts"></script>
 </body>
 
 </html>

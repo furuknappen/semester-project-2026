@@ -11,7 +11,7 @@
     @apply border-line-light flex h-10 rounded-2xl border bg-gray-100 pl-4 text-gray-900 ;
   }
   .content-container{
-    @apply  rounded-xl shadow-card bg-white p-4
+    @apply  rounded-xl shadow-card bg-white 
   }
   .sub-heading{
     @apply font-semibold text-lg mb-2

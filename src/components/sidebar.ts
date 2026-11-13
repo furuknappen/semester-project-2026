@@ -1,5 +1,7 @@
+// import { localStorageUtil } from "../utils/storageUtils";
 
 // ASIDE IS ACESSIBILITY CHECKED AND ALL GOOD, only todo left and render info
+
 
 const toggleSidebarBtn = document.getElementById(
   "sidebar-toggle",
@@ -61,6 +63,8 @@ function renderSidebar(sidebarRoot: HTMLElement): void {
     "content-container",
     "divide-y",
     "divide-line-light",
+    "p-4",
+   
   );
 
   const balanceHeading = document.createElement("h2");
@@ -72,7 +76,7 @@ function renderSidebar(sidebarRoot: HTMLElement): void {
   creditBalance.textContent = "1000,-";
   // TODO: hvis den oppdaterer seg oftere enn full page reload så må den ha linjen under, da leser den opp det nye tallet uten å skifte fokus
   // creditBalance.setAttribute("role", "status")
-  creditBalance.classList.add("text-3xl", "font-bold", "text-center");
+  creditBalance.classList.add("text-3xl", "font-bold", "text-center", "mt-4" );
 
   balanceSection.append(balanceHeading, creditBalance);
 
@@ -82,6 +86,8 @@ function renderSidebar(sidebarRoot: HTMLElement): void {
     "divide-y",
     "divide-line-light",
     "min-h-100",
+    "p-4",
+    
   );
 
   const listHeading = document.createElement("h2");

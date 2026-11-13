@@ -61,13 +61,13 @@ export type BidAmount = {
 };
 
 export type Meta = {
-  isFirstPag: boolean;
-  isLastPag: boolean;
-  currentPag: number;
-  previousPag: null;
-  nextPag: null;
-  pageCoun: number;
-  totalCoun: number;
+  isFirstPage: boolean;
+  isLastPage: boolean;
+  currentPage: number;
+  previousPage: null;
+  nextPage: null;
+  pageCount: number;
+  totalCount: number;
 };
 
 export type Bids = {
