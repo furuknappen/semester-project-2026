@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="../src/style.css" />
+
+<body>
+
+  <main>
+    <section id="gallery-section">
+      <div class="content-container p-4 md:w-150 w-full flex flex-col justify-center align-center">
+        <h2 class="sr-only">Photo gallery</h2>
+        <div class="mx-4 mt-4 relative ">
+          <button id="gallery-open" class="w-full" type="button">
+            <img id="gallery-main-image" class=" object-cover aspect-9/6 w-full rounded-2xl" />
+            <span class="sr-only">View full size</span>
+          </button>
+
+          <!-- image side -->
+          <button id="prev-image-btn" type="button" aria-label="Previous image" class="absolute -translate-y-1/2 left-4 top-1/2
+            bg-blue-100 text-primary rounded-full opacity-70
+            ">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M15 6l-6 6l6 6" />
+            </svg>
+          </button>
+          <button id="next-image-btn" type="button" aria-label="Next image" class="absolute -translate-y-1/2 top-1/2 right-4
+             bg-blue-100 text-primary rounded-full opacity-70">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 6l6 6l-6 6" />
+            </svg>
+          </button>
+          <p id="gallery-counter" class=" text-center" aria-live="polite"></p>
+        </div>
+
+        <div class=" flex flex-row relative justify-center">
+          <button id="carousel-prev-btn" type="button" aria-label="Scroll thumbnails left"
+            class="  bg-blue-100 text-primary rounded-full self-center ">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M15 6l-6 6l6 6" />
+            </svg>
+          </button>
+
+          <div id="thumbs-scroller" class="overflow-x-auto scroll-smooth">
+            <ul id="gallery-thumbs" class="gap-4 flex mx-4 "> </ul>
+          </div>
+
+          <button id="carousel-next-btn" type="button" aria-label="Scroll thumbnails right"
+            class=" bg-blue-100 text-primary rounded-full self-center">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 6l6 6l-6 6" />
+            </svg>
+          </button>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <!-- TODO: kanskje fikse noe her -->
+
+
+      <dialog id="gallery-dialog"
+        class="w-[min(90vw,60rem)] max-w-[90vw] max-h-[90vh] mx-auto my-auto backdrop:bg-slate-300 backdrop:opacity-40 rounded-2xl">
+        <div class="relative w-full">
+          <img id="gallery-full" src="" alt="" class="block w-full h-auto max-h-[80vh]object-contain" />
+
+          <button id="gallery-close" aria-label="Close full image view" type="button" class="absolute top-2 right-2
+           bg-blue-100 text-primary rounded-full opacity-70">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M18 6l-12 12" />
+              <path d="M6 6l12 12" />
+            </svg>
+          </button>
+          <button id="prev-dialog-btn" aria-label="Previous image" type="button"
+            class="absolute align-middle left-1 -translate-y-1/2 top-1/2  bg-blue-100 text-primary rounded-full opacity-70">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M15 6l-6 6l6 6" />
+            </svg>
+          </button>
+          <button id="next-dialog-btn" aria-label="Previous image" type="button"
+            class="absolute align-self-center right-1 -translate-y-1/2 top-1/2  bg-blue-100 text-primary rounded-full opacity-70">
+            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 6l6 6l-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        <p id="gallery-dialog-counter" aria-live="polite" class="text-center"></p>
+      </dialog>
+
+    </section>
+
+
+
+
+
+
+  </main>
+
+
+
+
+  <script type="module" src="../src/pages/listingDetailsPage.ts"></script>
+</body>
+
+</html>

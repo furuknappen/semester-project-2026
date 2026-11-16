@@ -38,7 +38,7 @@ export function createListing(listing: Listing, parentDiv: HTMLUListElement) {
   const title = document.createElement("h2");
   const anchorTag = document.createElement("a");
   //TODO: CREATE link
-  anchorTag.href = "";
+  anchorTag.href = `./pages/listingDetailsPage.html?id=${listing.id}` 
   anchorTag.classList.add(
     "after:absolute",
     "after:inset-0",
