@@ -20,7 +20,11 @@ return `${days}d ${hours}h ${minutes}m ${seconds}s left`
 
 
 
-export function startCountdown(element: HTMLElement, endsAt: string): () => void {
+export function startCountdown(
+  element: HTMLElement, 
+  endsAt: string, 
+  onEnd?: ()=> void,
+): () => void {
    const endTime = new Date(endsAt).getTime()
     let timer: number | undefined
 
@@ -29,7 +33,8 @@ export function startCountdown(element: HTMLElement, endsAt: string): () => void
     if(Date.now() >= endTime){
       element.textContent= "Ended"
       if(timer!== undefined) clearInterval(timer)
-      return
+      onEnd?.()
+        return
     } 
     element.textContent = formatTimeLeft(endsAt)
   }

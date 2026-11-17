@@ -13,7 +13,7 @@ export async function getListingDetails(
 ): Promise<Result<SingleListingResponse, Error>> {
   try {
     const response = await get<SingleListingResponse>(
-      `/auction/listings/${id}?_bids=true&seller=true&_active=true`,
+      `/auction/listings/${id}?_bids=true&_seller=true&_active=true`,
     );
 
     if (!response) {

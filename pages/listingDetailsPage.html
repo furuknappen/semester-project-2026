@@ -9,125 +9,211 @@
 <link rel="stylesheet" href="../src/style.css" />
 
 <body>
+  <main class="grid grid-cols-1 mx-4 gap-4 md:gap-8 md:grid-cols-[1fr_600px_600px_1fr]">
+    <div class="hidden md:block bg-red-200"></div>
+    <div class="flex flex-col gap-4">
+      <section id="gallery-section">
+        <div class="content-container p-4 md:w-150 w-full flex flex-col justify-center align-center ">
+          <h2 class="sr-only">Photo gallery</h2>
+          <div class="mx-4 mt-4 relative ">
+            <button id="gallery-open" class="w-full" type="button">
+              <img id="gallery-main-image" class=" object-cover aspect-9/6 w-full rounded-2xl" />
+              <span class="sr-only">View full size</span>
+            </button>
 
-  <main>
-    <section id="gallery-section">
-      <div class="content-container p-4 md:w-150 w-full flex flex-col justify-center align-center">
-        <h2 class="sr-only">Photo gallery</h2>
-        <div class="mx-4 mt-4 relative ">
-          <button id="gallery-open" class="w-full" type="button">
-            <img id="gallery-main-image" class=" object-cover aspect-9/6 w-full rounded-2xl" />
-            <span class="sr-only">View full size</span>
-          </button>
-
-          <!-- image side -->
-          <button id="prev-image-btn" type="button" aria-label="Previous image" class="absolute -translate-y-1/2 left-4 top-1/2
+            <!-- image side -->
+            <button id="prev-image-btn" type="button" aria-label="Previous image" class="absolute -translate-y-1/2 left-4 top-1/2
             bg-blue-100 text-primary rounded-full opacity-70
             ">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 6l-6 6l6 6" />
-            </svg>
-          </button>
-          <button id="next-image-btn" type="button" aria-label="Next image" class="absolute -translate-y-1/2 top-1/2 right-4
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 6l-6 6l6 6" />
+              </svg>
+            </button>
+            <button id="next-image-btn" type="button" aria-label="Next image" class="absolute -translate-y-1/2 top-1/2 right-4
              bg-blue-100 text-primary rounded-full opacity-70">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 6l6 6l-6 6" />
-            </svg>
-          </button>
-          <p id="gallery-counter" class=" text-center" aria-live="polite"></p>
-        </div>
-
-        <div class=" flex flex-row relative justify-center">
-          <button id="carousel-prev-btn" type="button" aria-label="Scroll thumbnails left"
-            class="  bg-blue-100 text-primary rounded-full self-center ">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 6l-6 6l6 6" />
-            </svg>
-          </button>
-
-          <div id="thumbs-scroller" class="overflow-x-auto scroll-smooth">
-            <ul id="gallery-thumbs" class="gap-4 flex mx-4 "> </ul>
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 6l6 6l-6 6" />
+              </svg>
+            </button>
+            <p id="gallery-counter" class=" text-center" aria-live="polite"></p>
           </div>
 
-          <button id="carousel-next-btn" type="button" aria-label="Scroll thumbnails right"
-            class=" bg-blue-100 text-primary rounded-full self-center">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 6l6 6l-6 6" />
-            </svg>
-          </button>
+          <div class=" flex flex-row relative justify-center">
+            <button id="carousel-prev-btn" type="button" aria-label="Scroll thumbnails left"
+              class="  bg-blue-100 text-primary rounded-full self-center ">
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 6l-6 6l6 6" />
+              </svg>
+            </button>
 
+            <div id="thumbs-scroller" class="overflow-x-auto scroll-smooth">
+              <ul id="gallery-thumbs" class="gap-4 flex mx-4 "> </ul>
+            </div>
 
+            <button id="carousel-next-btn" type="button" aria-label="Scroll thumbnails right"
+              class=" bg-blue-100 text-primary rounded-full self-center">
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 6l6 6l-6 6" />
+              </svg>
+            </button>
+          </div>
         </div>
 
+        <dialog id="gallery-dialog"
+          class="w-[min(90vw,60rem)] max-w-[90vw] max-h-[90vh] mx-auto my-auto backdrop:bg-slate-300 backdrop:opacity-40 rounded-2xl">
+          <div class="relative w-full">
+            <img id="gallery-full" src="" alt="" class="block w-full h-auto max-h-[80vh]object-contain" />
 
-
-
-
-
-
-
-
-
-      </div>
-      <!-- TODO: kanskje fikse noe her -->
-
-
-      <dialog id="gallery-dialog"
-        class="w-[min(90vw,60rem)] max-w-[90vw] max-h-[90vh] mx-auto my-auto backdrop:bg-slate-300 backdrop:opacity-40 rounded-2xl">
-        <div class="relative w-full">
-          <img id="gallery-full" src="" alt="" class="block w-full h-auto max-h-[80vh]object-contain" />
-
-          <button id="gallery-close" aria-label="Close full image view" type="button" class="absolute top-2 right-2
+            <button id="gallery-close" aria-label="Close full image view" type="button" class="absolute top-2 right-2
            bg-blue-100 text-primary rounded-full opacity-70">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M18 6l-12 12" />
-              <path d="M6 6l12 12" />
-            </svg>
-          </button>
-          <button id="prev-dialog-btn" aria-label="Previous image" type="button"
-            class="absolute align-middle left-1 -translate-y-1/2 top-1/2  bg-blue-100 text-primary rounded-full opacity-70">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M15 6l-6 6l6 6" />
-            </svg>
-          </button>
-          <button id="next-dialog-btn" aria-label="Previous image" type="button"
-            class="absolute align-self-center right-1 -translate-y-1/2 top-1/2  bg-blue-100 text-primary rounded-full opacity-70">
-            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
-              stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 6l6 6l-6 6" />
-            </svg>
-          </button>
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+              </svg>
+            </button>
+            <button id="prev-dialog-btn" aria-label="Previous image" type="button"
+              class="absolute align-middle left-1 -translate-y-1/2 top-1/2  bg-blue-100 text-primary rounded-full opacity-70">
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M15 6l-6 6l6 6" />
+              </svg>
+            </button>
+            <button id="next-dialog-btn" aria-label="Previous image" type="button"
+              class="absolute align-self-center right-1 -translate-y-1/2 top-1/2  bg-blue-100 text-primary rounded-full opacity-70">
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 6l6 6l-6 6" />
+              </svg>
+            </button>
+          </div>
+          <p id="gallery-dialog-counter" aria-live="polite" class="text-center"></p>
+        </dialog>
+      </section>
+    </div>
+    <div class="flex flex-col gap-4">
+      <section class="content-container p-8 ">
+        <h2>Auction details</h2>
+
+        <div >
+          <label class="sub-heading ">Place Bid</label>
+          <div class="flex flex-row items-center w-full justify-around mt-2 ">
+            <input class="input-field flex-1" type="number" placeholder="Enter number" />
+            <button
+              class="bg-primary text-light-text hover:bg-primary-hover mx-4  rounded-md px-2 py-1 text-center active:translate-y-1 md:px-5 md:py-2">Place
+              bid </button>
+          </div>
         </div>
 
-        <p id="gallery-dialog-counter" aria-live="polite" class="text-center"></p>
-      </dialog>
-
-    </section>
+        <dl class="divide-y divide-line-light ">
 
 
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="flex flex-col">
+              <span class="text-secondary-text">Highest bid</span>
+              <span id="highest-bid" class="line-clamp-5 wrap-break-word text-3xl"></span>
+            </dt>
+            <dd> </dd>
+          </div>
 
 
+          <div class="flex justify-between items-center gap-8 px-3 py-2">
+            <dt class="text-secondary-text ">Title</dt>
+            <dd id="title" class="line-clamp-3 wrap-break-word font-semibold   "></dd>
+          </div>
 
+          <!-- text side -->
+
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text ">Time left</dt>
+            <dd class="flex items-center gap-2 font-semibold">
+              <span id="ping" class=" relative flex h-2.5 w-2.5" aria-hidden="true">
+                <span
+                  class="animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite] absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 "></span>
+                <span class="rounded-full bg-red-700 h-2.5 w-2.5 absolute inline-flex"> </span>
+              </span>
+              </span>
+              <span role="timer" id="countdown-timer">
+                <span class="sr-only">
+                  Time left:
+                </span>
+
+              </span>
+            </dd>
+          </div>
+          <!-- copy knapp på ID, avatar på personen, link til email -->
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text">End date</dt>
+            <dd class="font-semibold" id="ends-at"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text">Created at</dt>
+            <dd class="font-semibold" id="created-at"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2 ">
+            <dt class="text-secondary-text">Amount of bids</dt>
+            <dd class="font-semibold" id="bids-amount"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text">Seller</dt>
+            <dd class="font-semibold" id="seller"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text">Sale ID</dt>
+            <dd class="font-semibold" id="sale-id"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-8 px-3 py-2">
+            <dt class="text-secondary-text ">Description</dt>
+            <dd class="font-semibold line-clamp-3 wrap-break-word" id="description"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text">Updated at</dt>
+            <dd class="font-semibold" id="updated"></dd>
+          </div>
+
+          <div class="flex justify-between items-center gap-4 px-3 py-2">
+            <dt class="text-secondary-text">Contact Seller</dt>
+            <dd class="font-semibold" id="contact"></dd>
+          </div>
+
+        </dl>
+
+      </section>
+
+      <div class="content-container overflow-x-auto p-8 ">
+
+
+        <table class="w-full" id="bid-history-table"></table>
+      </div>
+
+    </div>
+
+    <div class="hidden md:block bg-blue-200"></div>
 
   </main>
 

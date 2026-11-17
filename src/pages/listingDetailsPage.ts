@@ -1,3 +1,5 @@
+import { renderBidHistory } from "../components/renderBidHistory";
+import { renderListingDetails } from "../components/renderListingDetails";
 import { renderPhotoGallery } from "../components/renderPhotoGallery";
 import { getListingDetails } from "../hooks/getListingDetails";
 
@@ -20,6 +22,8 @@ if (listingId ) {
   if (result.ok) {
     console.log(result)
     renderPhotoGallery(result.value.data);
+    renderListingDetails(result.value.data)
+    renderBidHistory(result.value.data)
   } else {
     // postParent.textContent = result.error.message;
   }
