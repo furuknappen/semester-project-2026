@@ -9,6 +9,13 @@
 <link rel="stylesheet" href="../src/style.css" />
 
 <body>
+
+  <heading >
+    <a href> profilepage</a>
+  </heading>
+
+
+
   <main class="grid grid-cols-1 mx-4 gap-4 md:gap-8 md:grid-cols-[1fr_600px_600px_1fr]">
     <div class="hidden md:block bg-red-200"></div>
     <div class="flex flex-col gap-4">
@@ -112,16 +119,19 @@
     <div class="flex flex-col gap-4">
       <section class="content-container p-8 ">
         <h2>Auction details</h2>
-
-        <div >
-          <label class="sub-heading ">Place Bid</label>
+<!-- TODO: maybe disable the form when the time is put -->
+        <form id="place-bid-form">
+          <label for="place-bid-input" class="sub-heading ">Place Bid</label>
           <div class="flex flex-row items-center w-full justify-around mt-2 ">
-            <input class="input-field flex-1" type="number" placeholder="Enter number" />
-            <button
+            <input id="place-bid-input" name="bid" class="input-field flex-1" type="number" placeholder="Enter number" />
+            <button type="submit"
               class="bg-primary text-light-text hover:bg-primary-hover mx-4  rounded-md px-2 py-1 text-center active:translate-y-1 md:px-5 md:py-2">Place
               bid </button>
           </div>
-        </div>
+          <p id="bid-info" class="text-secondary-text block pl-4" role="alert" aria-live="polite">
+          
+          </p>
+        </form>
 
         <dl class="divide-y divide-line-light ">
 

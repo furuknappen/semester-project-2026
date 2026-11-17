@@ -24,6 +24,8 @@ if (listingId ) {
     renderPhotoGallery(result.value.data);
     renderListingDetails(result.value.data)
     renderBidHistory(result.value.data)
+    
+
   } else {
     // postParent.textContent = result.error.message;
   }
