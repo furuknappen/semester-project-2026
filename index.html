@@ -10,6 +10,9 @@
 
 <body>
   <header>
+
+    <a href="./pages/profilePage.html">Profilepage</a>
+
     <button id="theme-btn" class="items-center mr-4 absolute right-2 lg:right-8">
       <img id="sun-icon" src="../src/assets/sun.svg" />
       <img id="moon-icon" src="../src/assets/moon.svg" class="hidden" />
@@ -31,19 +34,58 @@
     class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] lg:justify-between xl:grid-cols-[250px_auto_300px] items-start my-4 mx-4 gap-4">
     <div class="hidden md:block"></div>
     <section class="">
+
+      <div class="flex flex-row justify-between mb-4">
+       <div>
+      <label for="sort-select">Sort by</label>
+      <select id="sort-select">
+        <option value="all">All</option>
+        <option value="active">Active auctions</option>
+
+      </select></div>
+
+      <form id="tag-form" role="search" class="flex gap-4 flex-row items-baseline">
+
+        <label for="tag-input"> Filter by tag</label>
+        <div class="flex gap-4 ">
+          <div class=" relative input-field">
+            <input class=" mr-8" type="text" id="tag-input" list="tag-options">
+
+            <datalist id="tag-options">
+            </datalist>
+
+            <button type="button" id="tag-clear" class="absolute right-2 top-1/2 -translate-y-1/2 p-1 z-80">
+
+              <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M18 6l-12 12" />
+                <path d="M6 6l12 12" />
+              </svg></button>
+
+          </div>
+          <button type="submit" class="bg-primary text-light-text hover:bg-primary-hover rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">Filter</button>
+        </div>
+
+      </form>
+</div>
+
       <ul id="cards-parent">
 
+
+
       </ul>
-   <div class="my-12 flex justify-center gap-4 md:gap-20 md:text-xl">
-      <button id="prev-btn"
-        class="bg-primary text-light-text hover:bg-primary-hover mx-8 my-4 rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">
-        Previous Page
-      </button>
-      <button id="next-btn"
-        class="bg-primary text-light-text hover:bg-primary-hover mx-8 my-4 rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">
-        Next Page
-      </button>
-    </div>
+      <div class="my-12 flex justify-center gap-4 md:gap-20 md:text-xl">
+        <button id="prev-btn"
+          class="bg-primary text-light-text hover:bg-primary-hover mx-8 my-4 rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">
+          Previous Page
+        </button>
+        <button id="next-btn"
+          class="bg-primary text-light-text hover:bg-primary-hover mx-8 my-4 rounded-md px-5 py-1 text-center active:translate-y-1 md:px-4 md:py-3">
+          Next Page
+        </button>
+      </div>
     </section>
 
 

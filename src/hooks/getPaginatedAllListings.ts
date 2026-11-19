@@ -8,10 +8,20 @@ export type PaginatedListingsResponse = {
 };
 
 export async function getAllPaginatedListings(page: number = 1,
-  limit: number = 12,): Promise<Result<PaginatedListingsResponse, Error>> {
+  limit: number = 12, options: { active?: boolean; tag?:string} = {}): Promise<Result<PaginatedListingsResponse, Error>> {
   try {
+    const params = new URLSearchParams({
+      _seller: "true", 
+      _bids: "true",
+      page: String(page),
+      limit: String(limit),
+    })
+
+  if(options.active) params.set("_active", "true")
+  if(options.tag) params.set("_tag", options.tag)
+
     const response = await get<PaginatedListingsResponse>(
-      `/auction/listings?page=${page}&limit=${limit}&_bids=true`
+      `/auction/listings?${params.toString()}`
     );
 
     if (!response) {
