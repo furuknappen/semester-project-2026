@@ -1,6 +1,6 @@
 import type { Listing } from "../types";
-import { sortBids } from "../utils/sortBids";
-import { formatTimeLeft, startCountdown } from "../utils/timeCountDown";
+
+import { startCountdown } from "../utils/timeCountDown";
 
 export function createListing(listing: Listing, parentDiv: HTMLUListElement) {
 

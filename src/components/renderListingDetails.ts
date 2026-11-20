@@ -32,9 +32,10 @@ export function renderListingDetails(listing: Listing) {
   const bidsAmount = document.getElementById("bids-amount") as HTMLElement;
   bidsAmount.textContent = String(listing._count.bids);
 
-  const seller = document.getElementById("seller") as HTMLElement;
+  const seller = document.getElementById("seller") as HTMLAnchorElement;
   if (listing.seller?.name) {
     seller.textContent = listing.seller?.name;
+    seller.href = `./profilePage.html?name=${listing.seller.name}`;
   }
 
   const id = document.getElementById("sale-id") as HTMLElement;

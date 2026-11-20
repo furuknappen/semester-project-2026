@@ -9,10 +9,40 @@
 </head>
 
 <body>
+  <main class=" xl:mx-80">
   <h2>profilepage</h2>
+
+   <div id="banner-container" class="w-full md:mx-20"></div>
+    <div id="profile-header" class="relative mb-4 lg:mb-12">
+      <div id="profile-img" class="absolute -top-10 left-1 md:left-32 lg:-top-16"></div>
+      <div id="profile-name" class="ml-24 text-4xl md:text-5xl lg:ml-72 text-dark-text dark:text-light-text"></div>
+      <p id="info-profile-div" class="mx-auto max-w-80"></p>
+    </div>
+
 
 
   <button type="button" id="create-listing">Create lisiting</button>
+
+
+  <section id="bid-section" class="content-container w-100 p-4 ">
+    <!-- <ul id="your-bids-ul" clsss="divide-y divide-line-light"> -->
+      <!-- listings goes here  -->
+
+    <!-- </ul> -->
+     <p id="error-bid-p"></p>
+  </section>
+
+
+  <section id="listing-section" class="content-container w-150 p-4 divide-y divide-line-light">
+    <!-- <h2 class="mb-2 sub-heading">Listings you have created</h2>
+    <ul id="your-listings-ul" class="divide-y divide-line-light">
+      
+
+    </ul> -->
+
+
+  </section>
+</main>
 
 
   <script type="module" src="../src/pages/profilePage.ts"></script>

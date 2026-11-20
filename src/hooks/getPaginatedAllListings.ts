@@ -15,6 +15,8 @@ export async function getAllPaginatedListings(page: number = 1,
       _bids: "true",
       page: String(page),
       limit: String(limit),
+      sort: "endsAt",
+      sortOrder: "desc",
     })
 
   if(options.active) params.set("_active", "true")

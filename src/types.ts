@@ -45,7 +45,7 @@ export type Listing = {
 
 export type Media = {
   url: string;
-  alt: string;
+  alt?: string;
 };
 
 export type CreateListingRequirement = {
@@ -75,6 +75,7 @@ export type Bids = {
   amount: number;
   bidder: Bidder
   created: string;
+  listing?: Listing
 };
 
 

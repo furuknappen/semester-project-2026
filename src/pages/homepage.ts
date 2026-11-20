@@ -8,7 +8,7 @@ import {
 import { getSearchResult } from "../hooks/getSearchResult.ts";
 import type { Listing } from "../types.ts";
 
-let currentPage = 1;
+const currentPage = 1;
 const POSTS_PER_PAGE = 30;
 
 type SortMode = "all" | "active" | "ended";
