@@ -30,15 +30,18 @@
       </svg>
     </button>
   </header>
-  <main
-    class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] lg:justify-between xl:grid-cols-[250px_auto_300px] items-start my-4 mx-4 gap-4">
+  <main class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] lg:justify-between xl:grid-cols-[250px_auto_300px] items-start my-4 mx-4 gap-4">
     <div class="hidden md:block"></div>
     <section class="">
-
+<div>
+        <input type="text" id="post-search-field" placeholder="Search for post"
+          class="input-field mx-auto w-92 md:mx-0" />
+        <div id="search-error-div"></div>
+      </div>
       <div class="flex flex-row justify-between mb-4">
        <div>
       <label for="sort-select">Sort by</label>
-      <select id="sort-select">
+      <select id="sort-select" class="input-field">
         <option value="all">All</option>
         <option value="active">Active auctions</option>
 

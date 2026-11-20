@@ -1,10 +1,11 @@
 import { createListing } from "../components/createListing.ts";
 import { addPagination, resetPagination } from "../components/pagination.ts";
-import { getAllListings } from "../hooks/getAllListings.ts";
+
 import {
   getAllPaginatedListings,
   type PaginatedListingsResponse,
 } from "../hooks/getPaginatedAllListings.ts";
+import { getSearchResult } from "../hooks/getSearchResult.ts";
 import type { Listing } from "../types.ts";
 
 let currentPage = 1;
@@ -38,8 +39,6 @@ function addKnownTags(listings: Listing[]): void {
   tagOptions.replaceChildren(...options);
 }
 
-// const result = await getAllPaginatedListings(currentPage, POSTS_PER_PAGE)
-
 const cardsParentDiv = document.getElementById(
   "cards-parent",
 ) as HTMLUListElement;
@@ -47,21 +46,11 @@ const cardsParentDiv = document.getElementById(
 async function applyFilter(): Promise<void> {
   const response = await fetchData(1, POSTS_PER_PAGE);
   if (!response) return;
-
-  // updateTagPills(allListings);
   renderCards(response.data);
   resetPagination(response.meta);
 }
 
-// async function loadAllListings(): Promise<void> {
-//   if (allLoaded) return
 
-//   const result = await getAllListings()
-//   if (!result.ok) return
-// console.log(result.value)
-//   allListings = result.value.data
-//   allLoaded = true
-// }
 
 async function fetchData(
   currentPage: number,
@@ -73,60 +62,8 @@ async function fetchData(
   });
 
   if (result.ok) return result.value;
-  //  const visible = sortListings(filterListings(allListings))
-  //  const totalPages = Math.max(1, Math.ceil(visible.length / postsPerPage))
-  //  const start = ((currentPage - 1) * postsPerPage)
-
-  // return{
-  //   data:visible.slice(start, start + postsPerPage),
-  //   meta: {
-  //     previousPage: currentPage > 1 ? currentPage - 1 : null,
-  //     nextPage: currentPage < totalPages ? currentPage + 1 : null
-  //   }
-  // } as PaginatedListingsResponse
+  
 }
-
-// function getAllTags(listings: Listing[]): string[] {
-//   const tags = listings.flatMap((listing) => listing.tags ?? []);
-//   return [...new Set(tags)].sort((a, b) => a.localeCompare(b, "nb-NO"));
-// }
-
-// function updateTagPills(listings: Listing[]): void {
-//   // tagSelect.replaceChildren();
-
-//   const tags = ["", ...getAllTags(listings)];
-
-//   for (const tag of tags) {
-//    const isActive = tag === tagFilter
-
-//     const pill = document.createElement("button");
-//     pill.type = "button";
-//     pill.dataset.tag = tag;
-//     pill.setAttribute("aria-pressed", String(isActive));
-//     pill.classList.add();
-
-//     pill.addEventListener("click", () => {
-//       tagFilter = tag;
-//       applyFilter()
-//     });
-//     tagSelect.append(pill);
-//   }
-// }
-
-// function filterListings(listings: Listing[]): Listing[] {
-//   if (!tagFilter) return listings;
-//   return listings.filter((listing) => listing.tags?.includes(tagFilter));
-// }
-
-// function sortListings(listings: Listing[]): Listing[] {
-//   const now = Date.now();
-
-//   if (sortMode === "active") {
-//     return listings.filter((a) => new Date(a.endsAt).getTime() > now);
-//   }
-
-//   return listings;
-// }
 
 function renderCards(listings: Listing[]): void {
   addKnownTags(listings);
@@ -165,4 +102,40 @@ tagClear.addEventListener("click", () => {
   tagInput.value = "";
   tagFilter = "";
   applyFilter();
+});
+
+const postSearchField = document.getElementById(
+  "post-search-field",
+) as HTMLInputElement;
+const searchErrorDiv = document.getElementById(
+      "search-error-div",
+    ) as HTMLDivElement;
+
+    postSearchField?.addEventListener("input", async () => {
+  if (postSearchField.value === "") {
+    return;
+  }   
+  searchErrorDiv.textContent=""
+
+  const query = postSearchField.value.trim();
+
+  const resultSearch = await getSearchResult(query);
+  if (resultSearch.ok) {
+    if (resultSearch.value.data.length === 0) {
+      searchErrorDiv.textContent = "";
+      searchErrorDiv.textContent = `Found no listings containing ${query}`;
+      postSearchField.after(searchErrorDiv);
+
+      if(postSearchField.value.length === 0 ){
+      searchErrorDiv.textContent = ""
+      }
+    }
+
+    renderCards(resultSearch.value.data);
+  } else {
+    const searchErrorDiv = document.getElementById(
+      "search-error-div",
+    ) as HTMLDivElement;
+    searchErrorDiv.textContent = resultSearch.error.message;
+  }
 });
