@@ -15,7 +15,10 @@ if (profileName) {
   window.location.href = "../index.html";
 }
 
-const openModal = document.getElementById("create-listing");
+const openCreateListingModal = document.getElementById("create-listing");
+
+
+
 async function renderProfilePage(profileName: string) {
   renderYourBidsList(profileName);
   renderYourListingsList(profileName);
@@ -67,7 +70,9 @@ async function renderProfilePage(profileName: string) {
     profileNameElement.textContent = profile.name;
   }
 }
-openModal?.addEventListener("click", (e) => {
+openCreateListingModal?.addEventListener("click", (e) => {
   e.preventDefault();
   renderCreateListingmodal();
 });
+
+

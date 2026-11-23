@@ -51,7 +51,6 @@ async function applyFilter(): Promise<void> {
 }
 
 
-
 async function fetchData(
   currentPage: number,
   postsPerPage: number,
@@ -94,11 +93,11 @@ const tagClear = document.getElementById("tag-clear") as HTMLButtonElement;
 tagForm.addEventListener("submit", (e) => {
   e.preventDefault();
   tagFilter = tagInput.value.trim();
-  applyFilter();
+  
 });
 
 tagClear.addEventListener("click", () => {
-  console.log("click")
+  // console.log("click")
   tagInput.value = "";
   tagFilter = "";
   applyFilter();

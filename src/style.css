@@ -11,7 +11,7 @@
     @apply border-line-light flex h-10 rounded-2xl border bg-gray-100 pl-4 text-gray-900 ;
   }
   .content-container{
-    @apply  rounded-xl shadow-card bg-white 
+    @apply  rounded-xl shadow-card dark:shadow-none text-dark-text dark:text-light-text bg-background-light dark:bg-[#2a2a2c] 
   }
   .sub-heading{
     @apply font-semibold text-lg mb-2
@@ -32,11 +32,12 @@
   --color-background-dark: #1e1e1e;
 
   /* color of most svgs */
-  --color-secondary-text: #6a7282;
+  --color-secondary-text-dark: #6a7282;
+  --color-secondary-text-light: #7f848f;
   --color-light-text: oklch(93.685% 0.003 264.782);
-  --color-dark-text: oklch(16.714% 0.06173 310.497);
-
-  --color-line-light: oklch(80.74% 0.00611 264.634);
+  --color-dark-text: oklch(16.227% 0.0606 305.023);
+  --c: #2a2a2c;
+  --color-line-light: #bec0c4;
   --color-line-dark: #5b5b5b;
 
   --font-arial: Arial, Helvetica, sans-serif;

@@ -94,7 +94,7 @@ export function createListing(listing: Listing, parentDiv: HTMLUListElement) {
   );
 
   const highestBidText = document.createElement("h3");
-  highestBidText.classList.add("text-secondary-text");
+  highestBidText.classList.add("text-secondary-text-dark", "dark:text-secondary-text-light");
   highestBidText.textContent = "Highest bid";
 
   const highestBidNumber = document.createElement("span");

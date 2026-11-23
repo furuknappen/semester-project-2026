@@ -1,10 +1,13 @@
-import { type newListingRequest, postNewListing } from "../hooks/postNewListing";
+import {
+  type newListingRequest,
+  postNewListing,
+} from "../hooks/postNewListing";
+import { getMediaFormForm } from "../utils/getMediaFromForm";
 
-
-type ListingMediaRequest = {
-  url: string;
-  alt: string;
-}
+// type ListingMediaRequest = {
+//   url: string;
+//   alt: string;
+// }
 
 export function renderCreateListingmodal() {
   const createListingDialog = document.createElement("dialog");
@@ -18,11 +21,14 @@ export function renderCreateListingmodal() {
     "w-full",
     "md:mx-auto",
     "md:my-auto",
-    "md:w-120"
+    "md:w-120",
   );
+
+  createListingDialog.setAttribute("aria-labelledby", "create-listing-title");
 
   const dialogTitle = document.createElement("h1");
   dialogTitle.classList.add("text-3xl");
+  dialogTitle.id = "create-listing-title";
   dialogTitle.textContent = "Create a listing";
   const newListingForm = document.createElement("form");
   newListingForm.classList.add("flex", "flex-col", "gap-2");
@@ -75,6 +81,7 @@ export function renderCreateListingmodal() {
   const addPhoto = document.createElement("button");
   addPhoto.type = "button";
   addPhoto.textContent = "Add another photo";
+  addPhoto.id = "add-photo-btn";
 
   const status = document.createElement("p");
   status.setAttribute("role", "status");
@@ -97,6 +104,7 @@ export function renderCreateListingmodal() {
       .forEach((wrapper) => {
         wrapper.hidden = false;
       });
+      status.textContent = "alt text fields are now shown";
   });
 
   const infoP = document.createElement("p");
@@ -109,7 +117,7 @@ export function renderCreateListingmodal() {
     "gap-16",
     "justify-center",
     "items-center",
-    "mt-8"
+    "mt-8",
   );
 
   const cancelBtn = document.createElement("button");
@@ -132,7 +140,7 @@ export function renderCreateListingmodal() {
     "rounded-xl",
     "md:px-8",
     "py-2",
-    "ml-8"
+    "ml-8",
   );
 
   buttonDiv.append(cancelBtn, submitBtn);
@@ -150,7 +158,7 @@ export function renderCreateListingmodal() {
     addAltBtn,
     addPhoto,
     buttonDiv,
-    status
+    status,
   );
 
   createListingDialog.append(dialogTitle, newListingForm);
@@ -174,44 +182,42 @@ export function renderCreateListingmodal() {
       media: getMediaFormForm(photoSection),
       endsAt: new Date(listingTime.value).toISOString(),
     };
-    console.log(body);
+    // console.log(body);
     const result = await postNewListing(body);
 
     if (result.ok) {
       // window.location.reload();
-      console.log(result);
+      // console.log(result);
       createListingDialog.close();
     } else {
-
       infoP.textContent = result.error.message;
     }
   });
 }
 
+// export function getMediaFormForm(photoSection: HTMLDivElement): ListingMediaRequest[] {
+//   const media: ListingMediaRequest[] = [];
 
+//   photoSection
+//     .querySelectorAll<HTMLDivElement>("[data-photo-index]")
+//     .forEach((entry) => {
+//       const url = entry
+//         .querySelector<HTMLInputElement>("input[name=images]")
+//         ?.value.trim();
+//       if (!url) return;
 
-export function getMediaFormForm(photoSection: HTMLDivElement): ListingMediaRequest[] {
-  const media: ListingMediaRequest[] = [];
+//       const alt =
+//         entry
+//           .querySelector<HTMLInputElement>("input[name=alts]")
+//           ?.value.trim() ?? "";
+//       media.push({ url, alt });
+//     });
+//   return media;
+// }
 
-  photoSection
-    .querySelectorAll<HTMLDivElement>("[data-photo-index]")
-    .forEach((entry) => {
-      const url = entry
-        .querySelector<HTMLInputElement>("input[name=images]")
-        ?.value.trim();
-      if (!url) return;
-
-      const alt =
-        entry
-          .querySelector<HTMLInputElement>("input[name=alts]")
-          ?.value.trim() ?? "";
-      media.push({ url, alt });
-    });
-  return media;
-}
-
-
-export function createPhotoEntry(index: number): HTMLDivElement {
+export function createPhotoEntry(
+  index: number,
+): HTMLDivElement {
   const entry = document.createElement("div");
   entry.classList.add(
     "pt-8",
@@ -266,7 +272,17 @@ export function createPhotoEntry(index: number): HTMLDivElement {
   removeBtn.classList.add("ml-2");
   removeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>`;
   removeBtn.setAttribute("aria-label", `Remove photo ${index}`);
-  removeBtn.addEventListener("click", () => entry.remove());
+  removeBtn.addEventListener("click", () => {
+    const next = entry.nextElementSibling ?? entry.previousElementSibling;
+    entry.remove();
+    const nextButton = next?.querySelector<HTMLButtonElement>("button");
+
+    if (nextButton) {
+      nextButton.focus();
+    } else {
+      document.getElementById("add-photo-btn")?.focus();
+    }
+  });
 
   altWrapper.append(altLabel, altInput);
   inputDiv.append(urlInput, removeBtn);

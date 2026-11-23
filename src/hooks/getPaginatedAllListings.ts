@@ -15,7 +15,7 @@ export async function getAllPaginatedListings(page: number = 1,
       _bids: "true",
       page: String(page),
       limit: String(limit),
-      sort: "endsAt",
+      sort: "created",
       sortOrder: "desc",
     })
 

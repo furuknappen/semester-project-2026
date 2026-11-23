@@ -9,7 +9,27 @@
 <link rel="stylesheet" href="../src/style.css" />
 
 <body>
+<header>
 
+    <a href="./pages/profilePage.html">Profilepage</a>
+
+    <button id="theme-btn" class="items-center mr-4 absolute right-2 lg:right-8">
+      <img id="sun-icon" src="../src/assets/sun.svg" />
+      <img id="moon-icon" src="../src/assets/moon.svg" class="hidden" />
+    </button>
+    <button id="sidebar-toggle" type="button" class=" lg:hidden" aria-label="sidebar with account details"
+      aria-controls="sidebar-root" aria-expanded="false" hidden>
+      <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"
+        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-pig-money">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M15 11v.01" />
+        <path d="M5.173 8.378a3 3 0 1 1 4.656 -1.377" />
+        <path
+          d="M16 4v3.803a6.019 6.019 0 0 1 2.658 3.197h1.341a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-1.342c-.336 .95 -.907 1.8 -1.658 2.473v2.027a1.5 1.5 0 0 1 -3 0v-.583a6.04 6.04 0 0 1 -1 .083h-4a6.04 6.04 0 0 1 -1 -.083v.583a1.5 1.5 0 0 1 -3 0v-2l0 -.027a6 6 0 0 1 4 -10.473h2.5l4.5 -3" />
+      </svg>
+    </button>
+  </header>
 
 
 
@@ -113,12 +133,18 @@
           <p id="gallery-dialog-counter" aria-live="polite" class="text-center"></p>
         </dialog>
       </section>
+
+   
+
+
+
+
     </div>
-    <div class="flex flex-col gap-4">
+    <div id="right-side" class="flex flex-col gap-4">
       <section class="content-container p-8 ">
-        <h2>Auction details</h2>
+            <h2 id="title" class="line-clamp-3 wrap-break-word font-semibold text-2xl mb-4  "></h2>   
 <!-- TODO: maybe disable the form when the time is put -->
-        <form id="place-bid-form">
+        <form id="place-bid-form" class="mb-4">
           <label for="place-bid-input" class="sub-heading ">Place Bid</label>
           <div class="flex flex-row items-center w-full justify-around mt-2 ">
             <input id="place-bid-input" name="bid" class="input-field flex-1" type="number" placeholder="Enter number" />
@@ -126,7 +152,7 @@
               class="bg-primary text-light-text hover:bg-primary-hover mx-4  rounded-md px-2 py-1 text-center active:translate-y-1 md:px-5 md:py-2">Place
               bid </button>
           </div>
-          <p id="bid-info" class="text-secondary-text block pl-4" role="alert" aria-live="polite">
+          <p id="bid-info" class="text-secondary-text-dark dark:text-secondary-text-light block pl-4" role="alert" aria-live="polite">
           
           </p>
         </form>
@@ -136,23 +162,19 @@
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
             <dt class="flex flex-col">
-              <span class="text-secondary-text">Highest bid</span>
+              <span class="text-secondary-text-dark dark:text-secondary-text-light">Highest bid</span>
               <span id="highest-bid" class="line-clamp-5 wrap-break-word text-3xl"></span>
             </dt>
             <dd> </dd>
           </div>
 
 
-          <div class="flex justify-between items-center gap-8 px-3 py-2">
-            <dt class="text-secondary-text ">Title</dt>
-            <dd id="title" class="line-clamp-3 wrap-break-word font-semibold   "></dd>
-          </div>
 
           <!-- text side -->
 
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text ">Time left</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light ">Time left</dt>
             <dd class="flex items-center gap-2 font-semibold">
               <span id="ping" class=" relative flex h-2.5 w-2.5" aria-hidden="true">
                 <span
@@ -170,44 +192,44 @@
           </div>
           <!-- copy knapp på ID, avatar på personen, link til email -->
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text">End date</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">End date</dt>
             <dd class="font-semibold" id="ends-at"></dd>
           </div>
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text">Created at</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">Created at</dt>
             <dd class="font-semibold" id="created-at"></dd>
           </div>
 
           <div class="flex justify-between items-center gap-4 px-3 py-2 ">
-            <dt class="text-secondary-text">Amount of bids</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">Amount of bids</dt>
             <dd class="font-semibold" id="bids-amount"></dd>
           </div>
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text">Seller</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">Seller</dt>
             <dd class="font-semibold"> <a id="seller">
 
             </a></dd>
           </div>
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text">Sale ID</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">Sale ID</dt>
             <dd class="font-semibold" id="sale-id"></dd>
           </div>
 
           <div class="flex justify-between items-center gap-8 px-3 py-2">
-            <dt class="text-secondary-text ">Description</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light ">Description</dt>
             <dd class="font-semibold line-clamp-3 wrap-break-word" id="description"></dd>
           </div>
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text">Updated at</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">Updated at</dt>
             <dd class="font-semibold" id="updated"></dd>
           </div>
 
           <div class="flex justify-between items-center gap-4 px-3 py-2">
-            <dt class="text-secondary-text">Contact Seller</dt>
+            <dt class="text-secondary-text-dark dark:text-secondary-text-light">Contact Seller</dt>
             <dd class="font-semibold" id="contact"></dd>
           </div>
 
@@ -229,7 +251,7 @@
 
 
 
-
+  <script type="module" src="../src/components/header.ts"></script>
   <script type="module" src="../src/pages/listingDetailsPage.ts"></script>
 </body>
 
