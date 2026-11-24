@@ -67,7 +67,7 @@ async function renderDetailsPage() {
         const message = `Do you want to delete this post? This is a permanent action`;
         const actionBtn = "Delete";
         createModal(heading, message, actionBtn, () => deleteListing(listingId), () => {
-          window.location.href = "/js2-camilla-furuknappen-larsen/";
+          window.location.href = "./profilePage.html"
         });
         });
 

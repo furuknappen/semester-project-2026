@@ -14,9 +14,23 @@ export async function renderYourListingsList(userName: string) {
   const result = await getAllListingsByProfile(userName);
   if (result.ok) {
     if (userName === localStorageUtil.load<LoginResponse>("user")?.data.name) {
-      h2.textContent = `Listings you have bid on`;
+      h2.textContent = `Listings you have created`;
     } else {
       h2.textContent = `Listings ${userName} have bid on`;
+    } 
+
+    listingSection?.append(h2);
+
+ if (result.value.data.length === 0) {
+      const infoEmpty = document.createElement("p");
+      if (
+        userName === localStorageUtil.load<LoginResponse>("user")?.data.name
+      ) {
+        infoEmpty.textContent = `You have not bid on anything yet`;
+      } else {
+        infoEmpty.textContent = `${userName} has not bid on anything yet`;
+      }
+      listingSection?.append(infoEmpty);
     }
 
     const ul = document.createElement("ul");
@@ -26,6 +40,7 @@ export async function renderYourListingsList(userName: string) {
       const listElement = document.createElement("li");
 
       const listRow = document.createElement("a");
+      listRow.href = `./listingDetailsPage.html?id=${listing.id}`
       listRow.classList.add("flex", "items-center", "my-1", "my-2");
 
       const imageDiv = document.createElement("article");

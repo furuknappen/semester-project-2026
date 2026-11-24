@@ -15,6 +15,20 @@ export async function renderYourBidsList(userName: string) {
       h2.textContent = `Listings you have bid on`;
     } else {
       h2.textContent = `Listings ${userName} have bid on`;
+    } 
+
+    bidSection?.append(h2);
+
+ if (result.value.data.length === 0) {
+      const infoEmpty = document.createElement("p");
+      if (
+        userName === localStorageUtil.load<LoginResponse>("user")?.data.name
+      ) {
+        infoEmpty.textContent = `You have not bid on anything yet`;
+      } else {
+        infoEmpty.textContent = `${userName} has not bid on anything yet`;
+      }
+      bidSection?.append(infoEmpty);
     }
 
     const ul = document.createElement("ul");
@@ -23,8 +37,9 @@ export async function renderYourBidsList(userName: string) {
     result.value.data.forEach((bid) => {
       if (!bid.listing) return;
       const listElement = document.createElement("li");
-
+      console.log(bid.listing.id);
       const listRow = document.createElement("a");
+      listRow.href = `./listingDetailsPage.html?id=${bid.listing.id}`;
       listRow.classList.add("flex", "items-center", "justify-between", "my-1");
 
       const imageDiv = document.createElement("article");
@@ -50,7 +65,7 @@ export async function renderYourBidsList(userName: string) {
       listRow.append(imageDiv, title, timeLeft);
       listElement.append(listRow);
       ul.append(listElement);
-      bidSection?.append(h2, ul);
+      bidSection?.append(ul);
     });
   } else {
     bidSection.textContent = result.error.message;

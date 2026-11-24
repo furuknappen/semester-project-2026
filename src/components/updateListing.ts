@@ -5,7 +5,7 @@ import {
 import type { Listing } from "../types";
 import { getMediaFormForm } from "../utils/getMediaFromForm";
 import { createPhotoEntry } from "./renderCreateListingmodal";
-
+//accessibility checked 
 export function renderUpdateListingModal(listing: Listing) {
   const updateListingDialog = document.createElement("dialog");
   updateListingDialog.classList.add(
@@ -26,7 +26,7 @@ export function renderUpdateListingModal(listing: Listing) {
   const dialogTitle = document.createElement("h1");
   dialogTitle.classList.add("text-3xl");
   dialogTitle.id = "update-listing-title";
-  dialogTitle.textContent = "Create a listing";
+  dialogTitle.textContent = "Update listing";
   const newListingForm = document.createElement("form");
   newListingForm.classList.add("flex", "flex-col", "gap-2");
 
@@ -49,22 +49,6 @@ export function renderUpdateListingModal(listing: Listing) {
   listingDescription.id = "listing-body";
   listingDescription.classList.add("input-field");
   listingDescription.value = listing.description;
-
-  const labelTime = document.createElement("label");
-  labelTime.classList.add("pt-8", "ml-2", "font-semibold");
-  labelTime.setAttribute("for", "listing-endsAt");
-  labelTime.textContent = "Select the end date";
-  const listingTime = document.createElement("input");
-  listingTime.required = true;
-  listingTime.type = "datetime-local";
-  listingTime.id = "listing-endsAt";
-  listingTime.classList.add("input-field");
-
-  const endsAtInput = new Date(listing.endsAt);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  listingTime.value =
-    `${endsAtInput.getFullYear()}-${pad(endsAtInput.getMonth() + 1)}-${pad(endsAtInput.getDate())}` +
-    `T${pad(endsAtInput.getHours())}:${pad(endsAtInput.getMinutes())}`;
 
   const labelTags = document.createElement("label");
   labelTags.classList.add("pt-8", "ml-2", "font-semibold");
@@ -105,7 +89,7 @@ export function renderUpdateListingModal(listing: Listing) {
     urlInput.id = `listing-image-${index}`;
     urlInput.name = "images";
     urlInput.classList.add("input-field", "flex-1");
-    urlInput.value = media.url || "test";
+    urlInput.value = media.url ?? "";
 
     const altWrapper = document.createElement("div");
     altWrapper.classList.add(
@@ -118,7 +102,7 @@ export function renderUpdateListingModal(listing: Listing) {
       "md:my-auto",
     );
 
-    altWrapper.hidden = !media?.alt;
+    altWrapper.style.display = media?.alt ? "flex" : "none";
 
     const altLabel = document.createElement("label");
     altLabel.classList.add("pt-2", "ml-2", "font-semibold");
@@ -155,7 +139,7 @@ export function renderUpdateListingModal(listing: Listing) {
     photoSection.append(entry);
   });
 
-  let photoCount = listing.media.length || 0;
+  let photoCount = listing.media.length;
 
   const addPhotoEntry = () => {
     photoCount += 1;
@@ -185,7 +169,7 @@ export function renderUpdateListingModal(listing: Listing) {
     photoSection
       .querySelectorAll<HTMLDivElement>(".alt-field")
       .forEach((wrapper) => {
-        wrapper.hidden = false;
+        wrapper.style.display = "flex";
       });
     status.textContent = "alt text fields are now shown";
   });
@@ -214,7 +198,7 @@ export function renderUpdateListingModal(listing: Listing) {
 
   const submitBtn = document.createElement("button");
   submitBtn.type = "submit";
-  submitBtn.textContent = "Create";
+  submitBtn.textContent = "Save changes";
   submitBtn.classList.add(
     "text-lg",
     "px-4",
@@ -227,7 +211,7 @@ export function renderUpdateListingModal(listing: Listing) {
     "ml-8",
   );
 
-  buttonDiv.append(cancelBtn, submitBtn);
+
 
   newListingForm.append(
     labelTitle,
@@ -236,11 +220,10 @@ export function renderUpdateListingModal(listing: Listing) {
     listingDescription,
     labelTags,
     listingTags,
-    labelTime,
-    listingTime,
     photoSection,
     addPhoto,
     addAltBtn,
+    infoP,
     buttonDiv,
     status,
   );
@@ -269,9 +252,8 @@ export function renderUpdateListingModal(listing: Listing) {
     const result = await putUpdateListing(listing.id, body);
 
     if (result.ok) {
-      // window.location.reload();
-      console.log(result);
       updateListingDialog.close();
+      window.location.reload();
     } else {
       infoP.textContent = result.error.message;
     }

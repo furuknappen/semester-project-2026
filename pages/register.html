@@ -14,7 +14,7 @@
 
     <!-- Main login is accessible -->
     <h1 class="text-4xl">Register</h1>
-    <p id="form-error" class="text-secondary-text block py-4" role="status" aria-live="polite"></p>
+    <p id="form-error" class="text-secondary-text-dark dark:text-secondary-text-light block py-4" role="status" aria-live="polite"></p>
 
     <form id="registration-form" novalidate>
       <div class="flex flex-col gap-2">
@@ -24,7 +24,7 @@
         <input class="input-field" type="text" id="username" name="username" required autocomplete="username"
           aria-required="true" aria-describedby="username-error" />
 
-        <p id="username-error" class="text-secondary-text block text-sm ml-2" hidden>
+        <p id="username-error" class="text-secondary-text-dark dark:text-secondary-text-light block text-sm ml-2" hidden>
         </p>
       </div>
 
@@ -33,7 +33,7 @@
             class="font-normal">(Optional)</span>
         </label>
 
-        <p id="registration-image-hint" class="ml-2 text-sm text-secondary-text"> Enter full web address, starting with
+        <p id="registration-image-hint" class="ml-2 text-sm text-secondary-text-dark dark:text-secondary-text-light"> Enter full web address, starting with
           http://</p>
         <input class="input-field" type="url" id="registration-image" name="imageUrl"
           placeholder="https://www.example.com/image.jpg"
@@ -43,7 +43,7 @@
 
       <div class="flex flex-col gap-2">
         <label class="ml-2 pt-8 font-semibold" for="registration-image-alt">Describe the picture</label>
-        <p id="registration-image-alt-hint" class="ml-2 text-sm text-secondary-text"> Helps others who use screen
+        <p id="registration-image-alt-hint" class="ml-2 text-sm text-secondary-text-dark dark:text-secondary-text-light"> Helps others who use screen
           readers understand the picture</p>
         <input class="input-field" type="text" id="registration-image-alt" name="imageAlt"
           aria-describedby="registration-image-alt-hint" />
@@ -52,7 +52,7 @@
       <div class="flex flex-col gap-2">
         <label class="ml-2 pt-8 font-semibold" for="registration-email">
           Email Address</label>
-        <p id="registration-email-hint" class="ml-2 text-sm text-secondary-text"> Use your Noroff student email, for
+        <p id="registration-email-hint" class="ml-2 text-sm text-secondary-text-dark dark:text-secondary-text-light"> Use your Noroff student email, for
           example name@stud.noroff.no</p>
         <input class="input-field" type="email" id="registration-email" name="email" autocomplete="email"
           aria-required="true" aria-describedby="registration-email-hint registration-email-error" required />
@@ -63,7 +63,7 @@
       <div class="flex flex-col gap-2">
         <label class="ml-2 pt-8 font-semibold" for="password1">
           Password</label>
-        <p id="password-hint" class="ml-2 text-sm text-secondary-text">At least 8 characters</p>
+        <p id="password-hint" class="ml-2 text-sm text-secondary-text-dark dark:text-secondary-text-light">At least 8 characters</p>
         <input class="input-field" type="password" id="password1" name="password1" required autocomplete="new-password"
           aria-required="true" aria-describedby="password-hint password-error" />
         <p id="password-error" class="text-sm ml-2" hidden>

@@ -3,7 +3,12 @@
 export function formatTimeLeft(endTime: string, now: number = Date.now()): string {
  
 const end = new Date(endTime).getTime()
+if( Number.isNaN(end)) return "Unknown end time"
+
 let remaining = Math.max(0, end - now)
+if(remaining === 0 ) return "Auction ended"
+
+
 
 const days = Math.floor(remaining / 86_400_000)
 remaining %= 86_400_000

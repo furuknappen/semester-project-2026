@@ -13,6 +13,9 @@
   .content-container{
     @apply  rounded-xl shadow-card dark:shadow-none text-dark-text dark:text-light-text bg-background-light dark:bg-[#2a2a2c] 
   }
+  .btn{
+    @apply bg-primary text-light-text hover:bg-primary-hover rounded-xl px-5 py-1 text-center active:translate-y-1 md:px-3 md:py-2 
+  }
   .sub-heading{
     @apply font-semibold text-lg mb-2
   }

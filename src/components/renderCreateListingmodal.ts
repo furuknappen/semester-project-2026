@@ -130,17 +130,9 @@ export function renderCreateListingmodal() {
 
   const submitBtn = document.createElement("button");
   submitBtn.type = "submit";
-  submitBtn.textContent = "Create";
+  submitBtn.textContent = "Create listing";
   submitBtn.classList.add(
-    "text-lg",
-    "px-4",
-    "md:text-xl",
-    "bg-primary",
-    "text-light-text",
-    "rounded-xl",
-    "md:px-8",
-    "py-2",
-    "ml-8",
+"btn"
   );
 
   buttonDiv.append(cancelBtn, submitBtn);

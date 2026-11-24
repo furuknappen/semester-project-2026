@@ -64,12 +64,19 @@ async function fetchData(
   
 }
 
+let stopFunctions: (() => void)[] = []
+
 function renderCards(listings: Listing[]): void {
+  stopFunctions.forEach((stop) => stop());
+  stopFunctions = []
+
+
   addKnownTags(listings);
-  cardsParentDiv.innerHTML = "";
+  cardsParentDiv.replaceChildren()
 
   listings.forEach((listing) => {
     createListing(listing, cardsParentDiv);
+    stopFunctions.push(stop)
   });
 }
 

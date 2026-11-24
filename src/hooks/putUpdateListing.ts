@@ -1,7 +1,7 @@
 import { put } from "../api/apiClient";
-import type { Listing, Media } from "../types";
+import type { Listing, Media, Meta } from "../types";
 import type { Result } from "../utils/result";
-// import type { PostsResponse } from "../getAllPosts";
+
 
 export type UpdateRequest = {
   title: string;
@@ -12,7 +12,7 @@ export type UpdateRequest = {
 
 type UpdateResponse = {
   data: Listing[];
-  meta: object;
+  meta: Meta;
 };
 
 export async function putUpdateListing(
